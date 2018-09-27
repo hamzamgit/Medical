@@ -1,0 +1,498 @@
+Help on module os:
+
+NNAAMMEE
+    os - OS routines for NT or Posix depending on what system we're on.
+
+MMOODDUULLEE  RREEFFEERREENNCCEE
+    https://docs.python.org/3.5/library/os.html
+    
+    The following documentation is automatically generated from the Python
+    source files.  It may be incomplete, incorrect or include features that
+    are considered implementation detail and may vary between Python
+    implementations.  When in doubt, consult the module reference at the
+    location listed above.
+
+DDEESSCCRRIIPPTTIIOONN
+    This exports:
+      - all functions from posix, nt or ce, e.g. unlink, stat, etc.
+      - os.path is either posixpath or ntpath
+      - os.name is either 'posix', 'nt' or 'ce'.
+      - os.curdir is a string representing the current directory ('.' or ':')
+      - os.pardir is a string representing the parent directory ('..' or '::')
+      - os.sep is the (or a most common) pathname separator ('/' or ':' or '\\')
+      - os.extsep is the extension separator (always '.')
+      - os.altsep is the alternate pathname separator (None or '/')
+      - os.pathsep is the component separator used in $PATH etc
+      - os.linesep is the line separator in text files ('\r' or '\n' or '\r\n')
+      - os.defpath is the default search path for executables
+      - os.devnull is the file path of the null device ('/dev/null', etc.)
+    
+    Programs that import and use 'os' stand a better chance of being
+    portable between different platforms.  Of course, they must then
+    only use functions that are defined by all platforms (e.g., unlink
+    and opendir), and leave all pathname manipulation to os.path
+    (e.g., split and join).
+
+CCLLAASSSSEESS
+    builtins.Exception(builtins.BaseException)
+        builtins.OSError
+    builtins.tuple(builtins.object)
+        stat_result
+        statvfs_result
+        terminal_size
+        posix.sched_param
+        posix.times_result
+        posix.uname_result
+        posix.waitid_result
+    
+    eerrrroorr = class OSError(Exception)
+     |  Base class for I/O related errors.
+     |  
+     |  Method resolution order:
+     |      OSError
+     |      Exception
+     |      BaseException
+     |      object
+     |  
+     |  Methods defined here:
+     |  
+     |  ____iinniitt____(self, /, *args, **kwargs)
+     |      Initialize self.  See help(type(self)) for accurate signature.
+     |  
+     |  ____nneeww____(*args, **kwargs) from builtins.type
+     |      Create and return a new object.  See help(type) for accurate signature.
+     |  
+     |  ____rreedduuccee____(...)
+     |      helper for pickle
+     |  
+     |  ____ssttrr____(self, /)
+     |      Return str(self).
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors defined here:
+     |  
+     |  cchhaarraacctteerrss__wwrriitttteenn
+     |  
+     |  eerrrrnnoo
+     |      POSIX exception code
+     |  
+     |  ffiilleennaammee
+     |      exception filename
+     |  
+     |  ffiilleennaammee22
+     |      second exception filename
+     |  
+     |  ssttrreerrrroorr
+     |      exception strerror
+     |  
+     |  ----------------------------------------------------------------------
+     |  Methods inherited from BaseException:
+     |  
+     |  ____ddeellaattttrr____(self, name, /)
+     |      Implement delattr(self, name).
+     |  
+     |  ____ggeettaattttrriibbuuttee____(self, name, /)
+     |      Return getattr(self, name).
+     |  
+     |  ____rreepprr____(self, /)
+     |      Return repr(self).
+     |  
+     |  ____sseettaattttrr____(self, name, value, /)
+     |      Implement setattr(self, name, value).
+     |  
+     |  ____sseettssttaattee____(...)
+     |  
+     |  wwiitthh__ttrraacceebbaacckk(...)
+     |      Exception.with_traceback(tb) --
+     |      set self.__traceback__ to tb and return self.
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors inherited from BaseException:
+     |  
+     |  ____ccaauussee____
+     |      exception cause
+     |  
+     |  ____ccoonntteexxtt____
+     |      exception context
+     |  
+     |  ____ddiicctt____
+     |  
+     |  ____ssuupppprreessss__ccoonntteexxtt____
+     |  
+     |  ____ttrraacceebbaacckk____
+     |  
+     |  aarrggss
+    
+    class sscchheedd__ppaarraamm(builtins.tuple)
+     |  Current has only one field: sched_priority");
+     |  
+     |  sched_priority
+     |    A scheduling parameter.
+     |  
+     |  Method resolution order:
+     |      sched_param
+     |      builtins.tuple
+     |      builtins.object
+     |  
+     |  Methods defined here:
+     |  
+     |  ____nneeww____(*args, **kwargs) from builtins.type
+     |      Create and return a new object.  See help(type) for accurate signature.
+     |  
+     |  ____rreedduuccee____(...)
+     |      helper for pickle
+     |  
+     |  ____rreepprr____(self, /)
+     |      Return repr(self).
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors defined here:
+     |  
+     |  sscchheedd__pprriioorriittyy
+     |      the scheduling priority
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data and other attributes defined here:
+     |  
+     |  nn__ffiieellddss = 1
+     |  
+     |  nn__sseeqquueennccee__ffiieellddss = 1
+     |  
+     |  nn__uunnnnaammeedd__ffiieellddss = 0
+     |  
+     |  ----------------------------------------------------------------------
+     |  Methods inherited from builtins.tuple:
+     |  
+     |  ____aadddd____(self, value, /)
+     |      Return self+value.
+     |  
+     |  ____ccoonnttaaiinnss____(self, key, /)
+     |      Return key in self.
+     |  
+     |  ____eeqq____(self, value, /)
+     |      Return self==value.
+     |  
+     |  ____ggee____(self, value, /)
+     |      Return self>=value.
+     |  
+     |  ____ggeettaattttrriibbuuttee____(self, name, /)
+     |      Return getattr(self, name).
+     |  
+     |  ____ggeettiitteemm____(self, key, /)
+     |      Return self[key].
+     |  
+     |  ____ggeettnneewwaarrggss____(...)
+     |  
+     |  ____ggtt____(self, value, /)
+     |      Return self>value.
+     |  
+     |  ____hhaasshh____(self, /)
+     |      Return hash(self).
+     |  
+     |  ____iitteerr____(self, /)
+     |      Implement iter(self).
+     |  
+     |  ____llee____(self, value, /)
+     |      Return self<=value.
+     |  
+     |  ____lleenn____(self, /)
+     |      Return len(self).
+     |  
+     |  ____lltt____(self, value, /)
+     |      Return self<value.
+     |  
+     |  ____mmuull____(self, value, /)
+     |      Return self*value.n
+     |  
+     |  ____nnee____(self, value, /)
+     |      Return self!=value.
+     |  
+     |  ____rrmmuull____(self, value, /)
+     |      Return self*value.
+     |  
+     |  ccoouunntt(...)
+     |      T.count(value) -> integer -- return number of occurrences of value
+     |  
+     |  iinnddeexx(...)
+     |      T.index(value, [start, [stop]]) -> integer -- return first index of value.
+     |      Raises ValueError if the value is not present.
+    
+    class ssttaatt__rreessuulltt(builtins.tuple)
+     |  stat_result: Result from stat, fstat, or lstat.
+     |  
+     |  This object may be accessed either as a tuple of
+     |    (mode, ino, dev, nlink, uid, gid, size, atime, mtime, ctime)
+     |  or via the attributes st_mode, st_ino, st_dev, st_nlink, st_uid, and so on.
+     |  
+     |  Posix/windows: If your platform supports st_blksize, st_blocks, st_rdev,
+     |  or st_flags, they are available as attributes only.
+     |  
+     |  See os.stat for more information.
+     |  
+     |  Method resolution order:
+     |      stat_result
+     |      builtins.tuple
+     |      builtins.object
+     |  
+     |  Methods defined here:
+     |  
+     |  ____nneeww____(*args, **kwargs) from builtins.type
+     |      Create and return a new object.  See help(type) for accurate signature.
+     |  
+     |  ____rreedduuccee____(...)
+     |      helper for pickle
+     |  
+     |  ____rreepprr____(self, /)
+     |      Return repr(self).
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors defined here:
+     |  
+     |  sstt__aattiimmee
+     |      time of last access
+     |  
+     |  sstt__aattiimmee__nnss
+     |      time of last access in nanoseconds
+     |  
+     |  sstt__bbllkkssiizzee
+     |      blocksize for filesystem I/O
+     |  
+     |  sstt__bblloocckkss
+     |      number of blocks allocated
+     |  
+     |  sstt__ccttiimmee
+     |      time of last change
+     |  
+     |  sstt__ccttiimmee__nnss
+     |      time of last change in nanoseconds
+     |  
+     |  sstt__ddeevv
+     |      device
+     |  
+     |  sstt__ggiidd
+     |      group ID of owner
+     |  
+     |  sstt__iinnoo
+     |      inode
+     |  
+     |  sstt__mmooddee
+     |      protection bits
+     |  
+     |  sstt__mmttiimmee
+     |      time of last modification
+     |  
+     |  sstt__mmttiimmee__nnss
+     |      time of last modification in nanoseconds
+     |  
+     |  sstt__nnlliinnkk
+     |      number of hard links
+     |  
+     |  sstt__rrddeevv
+     |      device type (if inode device)
+     |  
+     |  sstt__ssiizzee
+     |      total size, in bytes
+     |  
+     |  sstt__uuiidd
+     |      user ID of owner
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data and other attributes defined here:
+     |  
+     |  nn__ffiieellddss = 19
+     |  
+     |  nn__sseeqquueennccee__ffiieellddss = 10
+     |  
+     |  nn__uunnnnaammeedd__ffiieellddss = 3
+     |  
+     |  ----------------------------------------------------------------------
+     |  Methods inherited from builtins.tuple:
+     |  
+     |  ____aadddd____(self, value, /)
+     |      Return self+value.
+     |  
+     |  ____ccoonnttaaiinnss____(self, key, /)
+     |      Return key in self.
+     |  
+     |  ____eeqq____(self, value, /)
+     |      Return self==value.
+     |  
+     |  ____ggee____(self, value, /)
+     |      Return self>=value.
+     |  
+     |  ____ggeettaattttrriibbuuttee____(self, name, /)
+     |      Return getattr(self, name).
+     |  
+     |  ____ggeettiitteemm____(self, key, /)
+     |      Return self[key].
+     |  
+     |  ____ggeettnneewwaarrggss____(...)
+     |  
+     |  ____ggtt____(self, value, /)
+     |      Return self>value.
+     |  
+     |  ____hhaasshh____(self, /)
+     |      Return hash(self).
+     |  
+     |  ____iitteerr____(self, /)
+     |      Implement iter(self).
+     |  
+     |  ____llee____(self, value, /)
+     |      Return self<=value.
+     |  
+     |  ____lleenn____(self, /)
+     |      Return len(self).
+     |  
+     |  ____lltt____(self, value, /)
+     |      Return self<value.
+     |  
+     |  ____mmuull____(self, value, /)
+     |      Return self*value.n
+     |  
+     |  ____nnee____(self, value, /)
+     |      Return self!=value.
+     |  
+     |  ____rrmmuull____(self, value, /)
+     |      Return self*value.
+     |  
+     |  ccoouunntt(...)
+     |      T.count(value) -> integer -- return number of occurrences of value
+     |  
+     |  iinnddeexx(...)
+     |      T.index(value, [start, [stop]]) -> integer -- return first index of value.
+     |      Raises ValueError if the value is not present.
+    
+    class ssttaattvvffss__rreessuulltt(builtins.tuple)
+     |  statvfs_result: Result from statvfs or fstatvfs.
+     |  
+     |  This object may be accessed either as a tuple of
+     |    (bsize, frsize, blocks, bfree, bavail, files, ffree, favail, flag, namemax),
+     |  or via the attributes f_bsize, f_frsize, f_blocks, f_bfree, and so on.
+     |  
+     |  See os.statvfs for more information.
+     |  
+     |  Method resolution order:
+     |      statvfs_result
+     |      builtins.tuple
+     |      builtins.object
+     |  
+     |  Methods defined here:
+     |  
+     |  ____nneeww____(*args, **kwargs) from builtins.type
+     |      Create and return a new object.  See help(type) for accurate signature.
+     |  
+     |  ____rreedduuccee____(...)
+     |      helper for pickle
+     |  
+     |  ____rreepprr____(self, /)
+     |      Return repr(self).
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors defined here:
+     |  
+     |  ff__bbaavvaaiill
+     |  
+     |  ff__bbffrreeee
+     |  
+     |  ff__bblloocckkss
+     |  
+     |  ff__bbssiizzee
+     |  
+     |  ff__ffaavvaaiill
+     |  
+     |  ff__ffffrreeee
+     |  
+     |  ff__ffiilleess
+     |  
+     |  ff__ffllaagg
+     |  
+     |  ff__ffrrssiizzee
+     |  
+     |  ff__nnaammeemmaaxx
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data and other attributes defined here:
+     |  
+     |  nn__ffiieellddss = 10
+     |  
+     |  nn__sseeqquueennccee__ffiieellddss = 10
+     |  
+     |  nn__uunnnnaammeedd__ffiieellddss = 0
+     |  
+     |  ----------------------------------------------------------------------
+     |  Methods inherited from builtins.tuple:
+     |  
+     |  ____aadddd____(self, value, /)
+     |      Return self+value.
+     |  
+     |  ____ccoonnttaaiinnss____(self, key, /)
+     |      Return key in self.
+     |  
+     |  ____eeqq____(self, value, /)
+     |      Return self==value.
+     |  
+     |  ____ggee____(self, value, /)
+     |      Return self>=value.
+     |  
+     |  ____ggeettaattttrriibbuuttee____(self, name, /)
+     |      Return getattr(self, name).
+     |  
+     |  ____ggeettiitteemm____(self, key, /)
+     |      Return self[key].
+     |  
+     |  ____ggeettnneewwaarrggss____(...)
+     |  
+     |  ____ggtt____(self, value, /)
+     |      Return self>value.
+     |  
+     |  ____hhaasshh____(self, /)
+     |      Return hash(self).
+     |  
+     |  ____iitteerr____(self, /)
+     |      Implement iter(self).
+     |  
+     |  ____llee____(self, value, /)
+     |      Return self<=value.
+     |  
+     |  ____lleenn____(self, /)
+     |      Return len(self).
+     |  
+     |  ____lltt____(self, value, /)
+     |      Return self<value.
+     |  
+     |  ____mmuull____(self, value, /)
+     |      Return self*value.n
+     |  
+     |  ____nnee____(self, value, /)
+     |      Return self!=value.
+     |  
+     |  ____rrmmuull____(self, value, /)
+     |      Return self*value.
+     |  
+     |  ccoouunntt(...)
+     |      T.count(value) -> integer -- return number of occurrences of value
+     |  
+     |  iinnddeexx(...)
+     |      T.index(value, [start, [stop]]) -> integer -- return first index of value.
+     |      Raises ValueError if the value is not present.
+    
+    class tteerrmmiinnaall__ssiizzee(builtins.tuple)
+     |  A tuple of (columns, lines) for holding terminal window size
+     |  
+     |  Method resolution order:
+     |      terminal_size
+     |      builtins.tuple
+     |      builtins.object
+     |  
+     |  Methods defined here:
+     |  
+     |  ____nneeww____(*args, **kwargs) from builtins.type
+     |      Create and return a new object.  See help(type) for accurate signature.
+     |  
+     |  ____rreedduuccee____(...)
+     |      helper for pickle
+     |  
+     |  ____rreepprr____(self, /)
+     |      Return repr(self).
+     |  
+     |  -----------------------------------------------
